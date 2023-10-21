@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Muscle</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <script src="https://kit.fontawesome.com/f8d0447241.js" crossorigin="anonymous"></script>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <header class="shadow-sm">
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+          <a class="navbar-brand p-3" href="/">LOGO</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+                        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav ml-auto">
+          　<% if user_signed_in? %>
+            <li class="nav-item">
+                会員情報
+            </li>
+            <li class="nav-item">
+              <%= link_to post_images_path, class: 'nav-link text-dark' do %>
+                コミュニティ
+              <% end %>
+            </li>
+            <li class="nav-item">
+              <%= link_to new_post_image_path, class: 'nav-link text-dark' do %>
+                投稿
+              <% end %>
+            </li>
+            <li class="nav-item">
+              <%= link_to destroy_user_session_path, method: :delete, class: 'nav-link text-dark' do %>
+                 ログアウト
+              <% end %>
+            </li>
+            <% elsif admin_signed_in? %>
+            <li class="nav-item">
+              
+                会員一覧
+              
+            </li>
+            <li class="nav-item">
+              <%= link_to post_images_path, class: 'nav-link text-dark' do %>
+                 コミュニティ
+              <% end %>
+            </li>
+            <li class="nav-item">
+              <%= link_to destroy_admin_session_path, method: :delete, class: 'nav-link text-dark' do %>
+                 ログアウト
+              <% end %>
+            </li>
+            <% else %>
+            <li class="nav-item">
+              <%= link_to new_user_registration_path, class: 'nav-link text-dark' do %>
+                新規登録
+              <% end %>
+            </li>
+            <li class="nav-item">
+              <%= link_to user_session_path, class: 'nav-link text-dark' do %>
+                 ログイン
+              <% end %>
+            </li>
+            <li class="nav-item">
+                 ゲストログイン
+            </li>
+            <% end %>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <%= yield %>
+  </body>
+</html>

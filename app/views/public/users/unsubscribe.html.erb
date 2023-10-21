@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="row">
+   <div class="col-12">
+    <p style="padding: 60px" >
+                 　　　　　　　　　　本当に退会しますか?<br>
+         　　　　　　　　　　  退会すると今のアカウントでは投稿することや<br>
+       　　　　　　　　　　データの確認ができなくなります。
+    </p>
+    <table>
+      <body>
+        <td class='col-6'>　　　　　　　　　　　　　　　　　　<%= link_to '退会しない', customer_path, class: "btn btn-primary"  %></td>
+        <td class='col-6'><%= link_to "退会する", customers_withdraw_path, method: :patch, "data-confirm" => "商品を削除しますか？", class: "btn btn-danger" %></td>
+      </body>
+    </table>
+  </div>
+ </div>
+</div>
