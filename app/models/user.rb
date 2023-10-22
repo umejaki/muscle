@@ -6,7 +6,7 @@ class User < ApplicationRecord
          
   has_many :post_images, dependent: :destroy
   has_many :comments, dependent: :destroy
-  has_many :favorites
+  has_many :favorites, dependent: :destroy
   has_one_attached :image
   
   
@@ -17,5 +17,7 @@ class User < ApplicationRecord
    end
     image.variant(resize_to_fill: [width, height,]).processed
   end
+  
+
          
 end

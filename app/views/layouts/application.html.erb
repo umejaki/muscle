@@ -23,7 +23,9 @@
             <ul class="navbar-nav ml-auto">
           　<% if user_signed_in? %>
             <li class="nav-item">
+              <%= link_to user_path, class: 'nav-link text-dark' do %>
                 会員情報
+              <% end %>
             </li>
             <li class="nav-item">
               <%= link_to post_images_path, class: 'nav-link text-dark' do %>

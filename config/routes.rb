@@ -22,7 +22,11 @@ devise_for :admin, skip: [:registrations, :passwords], controllers: {
    get '/user/edit' => 'users#edit'
    get '/user' => 'users#show'
    resources :post_images, only: [:new, :create, :index, :show, :destroy] do
+    resource :favorites, only: [:create, :destroy]
     resources :comments, only: [:create, :destroy]
+   member do
+    get :favorites
+   end
   end
    
   end
