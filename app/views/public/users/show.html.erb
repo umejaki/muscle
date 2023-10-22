@@ -8,6 +8,10 @@
         <td><h4>登録情報</h4></td>
        </tr>
        <tr>
+        <td></td>
+        <td><%= image_tag @user.get_image(100,100) %></td>
+       </tr>
+       <tr>
         <td>ニックネーム</td>
         <td><%= @user.nick_name %></td>
       </tr>

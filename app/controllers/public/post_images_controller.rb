@@ -5,9 +5,11 @@ class Public::PostImagesController < ApplicationController
   end
   
   def show
-    @post_image = PostImage.find(params[:id])  
+    @post_image = PostImage.find(params[:id])
+    pp "@post_image------------------------#{@post_image.inspect}"
     @user = current_user
     @comment = Comment.new
+    pp "@comment-----------------------------#{@comment.inspect}"
   end 
   
   def index
