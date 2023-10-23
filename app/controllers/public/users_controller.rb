@@ -2,8 +2,8 @@ class Public::UsersController < ApplicationController
   before_action :user, only: [:favorites]
   
   def favorites
-    @favorites = Favorite.where(user_id: @user.id).pluck(:post_image_id)
-    @favorites_post_images = Post.find(favorites)
+    favorited_post_image_id = Favorite.where(user_id: @user.id).pluck(:post_image_id)
+    @favorites_post_images = PostImage.where(id: favorited_post_image_id)
   end 
   
   def edit
@@ -37,9 +37,9 @@ class Public::UsersController < ApplicationController
       params.require(:user).permit(:nick_name, :is_deleted)
     end
     
-  def user
-    @user = User.find(params[:id])
-  end
+    def user
+      @user = User.find(params[:id])
+    end
 
   
 end

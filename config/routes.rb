@@ -21,12 +21,14 @@ devise_for :admin, skip: [:registrations, :passwords], controllers: {
    patch '/user/edit' => 'users#update'
    get '/user/edit' => 'users#edit'
    get '/user' => 'users#show'
+   resources :users do
+    member do
+     get :favorites
+    end
+   end
    resources :post_images, only: [:new, :create, :index, :show, :destroy] do
     resource :favorites, only: [:create, :destroy]
     resources :comments, only: [:create, :destroy]
-   member do
-    get :favorites
-   end
   end
    
   end
