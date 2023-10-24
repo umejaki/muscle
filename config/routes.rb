@@ -16,6 +16,7 @@ devise_for :admin, skip: [:registrations, :passwords], controllers: {
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   
   scope module: :public do
+   post 'users/guest_sign_in' => 'users/sessions#guest_sign_in'
    get '/users/unsubscribe' => 'users#unsubscribe'
    patch '/users/withdraw' => 'users#withdraw'
    patch '/user/edit' => 'users#update'

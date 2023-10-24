@@ -13,8 +13,13 @@ class Public::PostImagesController < ApplicationController
   end 
   
   def index
+   if params[:post_keyword]
+    @post_images = PostImage.where(['introduction LIKE(?) OR title LIKE(?)','%'+params[:post_keyword]+'%','%'+params[:post_keyword]+'%'])
+    @user = current_user
+   else 
     @post_images = PostImage.all  
     @user = current_user
+   end 
   end 
   
   def create
