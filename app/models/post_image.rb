@@ -5,6 +5,12 @@ class PostImage < ApplicationRecord
   belongs_to :user
   has_many :favorites, dependent: :destroy
   
+  # 以下を追記
+  #Post_imagesテーブルから中間テーブルに対する関連付け
+  has_many :post_image_tag_relations, dependent: :destroy
+  #Post_imagesテーブルから中間テーブルを介してTagsテーブルへの関連付け
+  has_many :tags, through: :Post_image_tag_relations, dependent: :destroy
+  
   def get_image(width, height)
    unless image.attached?
     file_path = Rails.root.join('app/assets/images/no_image.jpg')

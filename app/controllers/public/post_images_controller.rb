@@ -42,4 +42,8 @@ class Public::PostImagesController < ApplicationController
     params.require(:post_image).permit(:image, :title, :introduction)
   end
   
+  def article_params
+    params.require(:article).permit(:body, tag_ids: [])
+  end
+  
 end

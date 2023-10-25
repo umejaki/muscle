@@ -10,3 +10,10 @@ Admin.create!(
   email: 'a@1',
   password: '1'
 )
+
+Tag.create([
+  { name: '家トレ' },
+  { name: '筋トレ器具' },
+  { name: '私を褒めて' },
+  { name: '続けていこう' },
+])

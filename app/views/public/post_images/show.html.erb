@@ -14,6 +14,11 @@
       <tr>
        <td><%= @post_image.introduction %></td>
       </tr>
+      <tr>
+       <% @post_image.tags.each do |tag| %>
+   　 　　 <span><%= tag.name %></span>
+       <% end %>
+      </tr>
      </body>
    </table>
     <% if @post_image.favorited_by?(current_user) %>
