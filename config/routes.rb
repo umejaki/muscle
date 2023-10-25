@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   get 'homes/top'
   root to: "homes#top"
   # ユーザー用
-# URL /customers/sign_in ...
+# URL /users/sign_in ...
 devise_for :users, skip: [:passwords], controllers: {
   registrations: "public/registrations",
   sessions: 'public/sessions'
@@ -15,8 +15,11 @@ devise_for :admin, skip: [:registrations, :passwords], controllers: {
 }
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   
+  devise_scope :user do
+    post "users/guest_sign_in", to: "public/sessions#guest_sign_in"
+  end
+  
   scope module: :public do
-   post 'users/guest_sign_in' => 'users/sessions#guest_sign_in'
    get '/users/unsubscribe' => 'users#unsubscribe'
    patch '/users/withdraw' => 'users#withdraw'
    patch '/user/edit' => 'users#update'
