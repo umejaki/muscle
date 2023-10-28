@@ -18,9 +18,17 @@ class Public::PostImagesController < ApplicationController
     @user = current_user
    else 
     @post_images = PostImage.all  
+    @tag = Tag.all
     @user = current_user
    end 
   end 
+  
+  def search_tag
+    #検索されたタグを受け取る
+    @tag = Tag.find(params[:id])
+    #検索されたタグに紐づく投稿を表示
+    @post_images = @tag.post_images
+  end
   
   def create
     # １.&2. データを受け取り新規登録するためのインスタンス作成
