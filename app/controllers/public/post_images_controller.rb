@@ -39,11 +39,7 @@ class Public::PostImagesController < ApplicationController
   
     # ストロングパラメータ
   def post_image_params
-    params.require(:post_image).permit(:image, :title, :introduction)
+    params.require(:post_image).permit(:image, :title, :introduction, tag_ids: [])
   end
-  
-  def article_params
-    params.require(:article).permit(:body, tag_ids: [])
-  end
-  
+
 end

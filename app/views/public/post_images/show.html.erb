@@ -15,9 +15,11 @@
        <td><%= @post_image.introduction %></td>
       </tr>
       <tr>
-       <% @post_image.tags.each do |tag| %>
-   　 　　 <span><%= tag.name %></span>
-       <% end %>
+       <td>
+      　 <% @post_image.tags.each do |tag| %>
+   　 　 　 <span><%= tag.name %></span>
+      　 <% end %>
+       </td>
       </tr>
      </body>
    </table>

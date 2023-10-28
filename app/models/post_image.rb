@@ -1,15 +1,17 @@
 class PostImage < ApplicationRecord
+  
+  # 以下を追記
+  #Post_imagesテーブルから中間テーブルに対する関連付け
+  has_many :post_image_tag_relations, dependent: :destroy
+  #Post_imagesテーブルから中間テーブルを介してTagsテーブルへの関連付け
+  has_many :tags, through: :post_image_tag_relations, dependent: :destroy
 
   has_one_attached :image
   has_many :comments, dependent: :destroy
   belongs_to :user
   has_many :favorites, dependent: :destroy
   
-  # 以下を追記
-  #Post_imagesテーブルから中間テーブルに対する関連付け
-  has_many :post_image_tag_relations, dependent: :destroy
-  #Post_imagesテーブルから中間テーブルを介してTagsテーブルへの関連付け
-  has_many :tags, through: :Post_image_tag_relations, dependent: :destroy
+  
   
   def get_image(width, height)
    unless image.attached?
