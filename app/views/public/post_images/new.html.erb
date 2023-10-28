@@ -1,25 +1,25 @@
 <div class="container">
   <div class="row">
    <div class="col-12">
-  <h3>投稿</h3>
-   <div>
-      <%= form_with model: @post_image, url: post_images_path do |f| %>
-       <div style="padding: 15px 0px" >画像　　　　　　　<%= f.file_field :image, accept: "image/*" %></div>
-       <div style="padding: 15px 0px" >タイトル　　　　　<%= f.text_field :title %></div>
-       <div style="padding: 15px 0px" >内容　　　　　　　<%= f.text_area :introduction %></div>
-       <div class='form-group'>
-        <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
-            <div class='form-check'>
-                <%= tag.label class: 'form-check-label' do %>
-                    <%= tag.check_box class: 'form-check-input' %>
-                    <%= tag.text %>
-                <% end %>
-            </div>
+    <h3>投稿</h3>
+     <div>
+        <%= form_with model: @post_image, url: post_images_path do |f| %>
+         <div style="padding: 15px 0px" >画像　　　　　　　<%= f.file_field :image, accept: "image/*" %></div>
+         <div style="padding: 15px 0px" >タイトル　　　　　<%= f.text_field :title %></div>
+         <div style="padding: 15px 0px" >内容　　　　　　　<%= f.text_area :introduction %></div>
+         <div class='form-group'>
+          <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
+              <div class='form-check'>
+                  <%= tag.label class: 'form-check-label' do %>
+                      <%= tag.check_box class: 'form-check-input' %>
+                      <%= tag.text %>
+                  <% end %>
+              </div>
+          <% end %>
+     　　　 </div>
+         <div>　　　　　　　　　　　　　 <%= f.submit "投稿する", class:'btn btn-primary btn-success' %></div>
         <% end %>
-   　　　 </div>
-       <div>　　　　　　　　　　　　　 <%= f.submit "投稿する", class:'btn btn-primary btn-success' %></div>
-      <% end %>
-   </div>
+     </div>
   </div>
  </div>
 </div>

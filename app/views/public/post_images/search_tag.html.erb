@@ -1,25 +1,27 @@
- <h2>タグが<%#= @tag.name %>の投稿一覧</h2>
+<div class="container">
+ <div class="col-12">
+ <h2>タグが<%= @tag.name %>の投稿一覧</h2>
  
- <!--タグリスト-->
+  <i class="fa-sharp fa-solid fa-tag"></i>
+  <%= @tag.name %>
+  <table>
+   <% @post_images.each do |post_image|%>
+   <tbody>
+    <tr>
+     <td><%= post_image.user.nick_name %></td>
+     <td>
+      <%= link_to post_image_path(post_image.id) do %>
+       <%= post_image.title %>
+      <% end %>
+     </td>
+     <td><%= post_image.introduction %></td>
+    </tr>
+    <tr>
+     <td><%= link_to "#{post_image.comments.count} コメント", post_image_path(post_image.id) %></td>
+    </tr>
+   </tbody>
+   <% end %>
+  </table>
   
-    <i class="fa-sharp fa-solid fa-tag"></i>
-    <%=link_to @tag.name, "/post_images/search_tag/#{tag.id}" %>
-
-    <table>
-     <% @post_images.each do |post_image|%>
-     <tbody>
-      <tr>
-       <td><%= post_image.user.nick_name %></td>
-       <td>
-        <%= link_to post_image_path(post_image.id) do %>
-         <%= post_image.title %>
-        <% end %>
-       </td>
-       <td><%= post_image.introduction %></td>
-      </tr>
-      <tr>
-       <td><%= link_to "#{post_image.comments.count} コメント", post_image_path(post_image.id) %></td>
-      </tr>
-     </tbody>
-     <% end %>
-    </table>
+ </div>
+</div>

@@ -49,9 +49,9 @@
             
             <% elsif admin_signed_in? %>
             <li class="nav-item">
-              
+              <%= link_to admin_users_path, class: 'nav-link text-dark' do %>
                 会員一覧
-              
+              <% end %>
             </li>
             <li class="nav-item">
               <%= link_to post_images_path, class: 'nav-link text-dark' do %>

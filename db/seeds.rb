@@ -8,7 +8,7 @@
 
 Admin.create!(
   email: 'a@1',
-  password: '1'
+  password: '111111'
 )
 
 Tag.create([
