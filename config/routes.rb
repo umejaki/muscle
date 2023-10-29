@@ -27,6 +27,7 @@ Rails.application.routes.draw do
     patch '/user/edit' => 'users#update'
     get '/user/edit' => 'users#edit'
     get '/user' => 'users#show'
+    get 'user/post_images' => 'users#index'
     resources :users do
       member do
         get :favorites
@@ -35,7 +36,7 @@ Rails.application.routes.draw do
 
     get "post_images/search_tag/:id" => "post_images#search_tag"
 
-    resources :post_images, only: [:new, :create, :index, :show, :destroy] do
+    resources :post_images, only: [:new, :index, :show, :create, :destroy] do
       resource :favorites, only: [:create, :destroy]
       resources :comments, only: [:create, :destroy]
     end
@@ -44,6 +45,7 @@ Rails.application.routes.draw do
   
   namespace :admin do
     get '/' => 'homes#top'
+    get '/user/post_images' => 'post_images#post_iamge'
     resources :post_images , only: [:index, :show, :destroy]
     resources :users, only: [:index, :show, :edit, :destroy, :update]
   end

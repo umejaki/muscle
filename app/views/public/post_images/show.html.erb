@@ -21,6 +21,9 @@
       　 <% end %>
        </td>
       </tr>
+      <tr>
+       <td><%= link_to "削除", post_image_path(@post_image.id), method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
+      </tr>
      </body>
    <div></div>
    </table>

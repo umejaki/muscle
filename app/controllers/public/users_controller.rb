@@ -14,6 +14,11 @@ class Public::UsersController < ApplicationController
     @user = current_user
   end
   
+  def index
+    @user = current_user
+    @post_images = @user.post_images.all
+  end 
+  
   def unsubscribe
     @user = current_user
   end
