@@ -19,7 +19,7 @@ class Public::UsersController < ApplicationController
   end
   
   def withdraw
-    @user = User.find(current_customer.id)
+    @user = User.find(current_user.id)
     @user.update(is_deleted: true)
     reset_session
     redirect_to root_path
@@ -27,14 +27,14 @@ class Public::UsersController < ApplicationController
   
   def update
     @user = current_user
-    @cuser.update(user_params)
+    @user.update(user_params)
     redirect_to user_path
   end 
   
     protected
     
     def user_params
-      params.require(:user).permit(:nick_name, :is_deleted)
+      params.require(:user).permit(:nick_name, :email, :is_deleted)
     end
     
     def user

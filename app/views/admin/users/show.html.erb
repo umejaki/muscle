@@ -1,5 +1,39 @@
-<div class='container'>
- <div class='col'>
-    
+<div class="container">
+  <div class="row">
+   <div class="col-12">
+    <h3>マイページ</h3>
+    <table class="col-8">
+      <tbody>
+       <tr>
+        <td><h4>登録情報</h4></td>
+       </tr>
+       <tr>
+        <td></td>
+        <td><%= image_tag @user.get_image(100,100) %></td>
+       </tr>
+       <tr>
+        <td>ニックネーム</td>
+        <td><%= @user.nick_name %></td>
+      </tr>
+      <tr>
+        <td>メールアドレス</td>
+        <td><%= @user.email %></td>
+      </tr>
+      <tr>
+       <td>退会ステータス</td>
+       <td>
+           <% if @user.is_deleted %>
+             <td>退会</td>
+            <% else %>
+             <td>有効</td>
+           <% end %>
+       </td>
+      </tr>
+      <tr>
+        <td>　　　　　　<%= link_to "編集する",edit_admin_user_path, class:'btn btn-success' %></td>
+     <tr>
+     </tbody>
+    </table>
+  </div>
  </div>
 </div>

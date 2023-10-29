@@ -43,6 +43,12 @@ class Public::PostImagesController < ApplicationController
    end 
   end
   
+  def destroy
+    @post_image = PostImage.find(params[:id])
+    @post_image.destroy
+    redirect_to user_path
+  end 
+  
   private
   
     # ストロングパラメータ
