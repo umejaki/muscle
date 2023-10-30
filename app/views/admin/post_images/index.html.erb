@@ -9,16 +9,13 @@
      <% @post_images.each do |post_image| %>
      <tbody>
       <tr>
-       <td><%= @user.nick_name %></td>
+       <td><%= post_image.user.nick_name %></td>
        <td>
-        <%= link_to post_image_path(post_image.id) do %>
+        <%= link_to admin_post_image_path(post_image.id) do %>
         <%= post_image.title %>
         <% end %>
        </td>
        <td><%= post_image.introduction %></td>
-      </tr>
-      <tr>
-       <td><%= link_to "#{post_image.comments.count} コメント", post_image_path(post_image.id) %></td>
       </tr>
      </tbody>
      <% end %>

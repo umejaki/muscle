@@ -1,0 +1,44 @@
+<div class="container">
+  <div class="col">
+   <table>
+     <body>
+       <tr>
+       <td><%= image_tag @post_image.get_image(100,100) %></td>
+      </tr>
+      <tr>
+       <td><%= @user.nick_name %></td>
+      </tr>
+      <tr>
+       <td><%= @post_image.title %></td>
+      </tr>
+      <tr>
+       <td><%= @post_image.introduction %></td>
+      </tr>
+      <tr>
+       <td>
+      　 <% @post_image.tags.each do |tag| %>
+   　 　 　 <span><%= tag.name %></span>
+      　 <% end %>
+       </td>
+      </tr>
+      <tr>
+       <td><%= link_to "削除", post_image_path(@post_image.id), method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
+      </tr>
+      <tr>
+       <td>♥<%= @post_image.favorites.count %> いいね</td>
+      </tr>
+     </body>
+   </table>
+  </div>
+  <div class="col">
+     <p>コメント件数：<%= @post_image.comments.count %></p>
+      <% @post_image.comments.each do |post_comment| %>
+     <p><%= image_tag post_comment.user.get_image(100,100) %></p>
+       <%= post_comment.user.nick_name %>
+       <%= post_comment.comment %>
+        <%= link_to "削除", admin_post_image_comment_path(post_comment.post_image, post_comment), method: :delete %>
+      <% end %>
+  </div>
+  <div>
+  </div>
+</div>

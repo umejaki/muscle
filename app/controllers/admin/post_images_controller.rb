@@ -2,13 +2,17 @@ class Admin::PostImagesController < ApplicationController
   
   def index
     @post_images = PostImage.all
-    @use = User.all
     @tag = Tag.all
   end 
   
-  def post_image
-    @user = User.find(params[:id])
-    @post_images = @user.post_images.all
-  end 
+  def show
+    @post_image = PostImage.find(params[:id])
+    @user = @post_image.user
+  end
+  
+  private
+  def user_params
+    params.require(:user).permit(:nick_name, :email, :is_deleted)
+  end
   
 end

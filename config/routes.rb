@@ -45,9 +45,12 @@ Rails.application.routes.draw do
   
   namespace :admin do
     get '/' => 'homes#top'
-    get '/user/post_images' => 'post_images#post_iamge'
-    resources :post_images , only: [:index, :show, :destroy]
-    resources :users, only: [:index, :show, :edit, :destroy, :update]
+    resources :post_images , only: [:index, :show, :destroy] do
+      resources :comments, only: [:destroy]
+    end 
+    resources :users, only: [:index, :show, :edit, :destroy, :update] do
+      get '/post_images' => 'users#post_image', as: 'post_images'
+    end
   end
   
 end

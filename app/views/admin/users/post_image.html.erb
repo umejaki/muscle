@@ -1,17 +1,12 @@
 <div class="container">
   <div class="col">
-   <% @tag.each do |tag|%>
-    <i class="fa-sharp fa-solid fa-tag"></i>
-    <%= link_to tag.name, "/post_images/search_tag/#{tag.id}" %>
-    <%="(#{tag.post_images.count})" %>
-   <% end %>
     <table>
      <% @post_images.each do |post_image| %>
      <tbody>
       <tr>
-       <td><%= post_image.user.nick_name %></td>
+       <td><%= @user.nick_name %></td>
        <td>
-        <%= link_to post_image_path(post_image.id) do %>
+        <%= link_to admin_post_image_path(post_image.id) do %>
         <%= post_image.title %>
         <% end %>
        </td>
