@@ -1,4 +1,5 @@
 <div class="container">
+ <div class="row">
   <div class="col">
    <table>
      <body>
@@ -29,9 +30,9 @@
       </tr>
      </body>
    </table>
+          <p>コメント件数：<%= @post_image.comments.count %></p>
   </div>
   <div class="col">
-     <p>コメント件数：<%= @post_image.comments.count %></p>
       <% @post_image.comments.each do |post_comment| %>
      <p><%= image_tag post_comment.user.get_image(100,100) %></p>
        <%= post_comment.user.nick_name %>
@@ -39,6 +40,5 @@
         <%= link_to "削除", admin_post_image_comment_path(post_comment.post_image, post_comment), method: :delete %>
       <% end %>
   </div>
-  <div>
-  </div>
+ </div>
 </div>
