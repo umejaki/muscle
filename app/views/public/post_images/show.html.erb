@@ -1,4 +1,5 @@
 <div class="container">
+ <% if user_signed_in? %>
  <div class="row">
   <div class="col">
    <table>
@@ -26,7 +27,6 @@
        <td><%= link_to "削除", post_image_path(@post_image.id), method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
       </tr>
      </body>
-
    </table>
     <% if @post_image.favorited_by?(current_user) %>
        <p>
@@ -40,11 +40,12 @@
            ♡<%= @post_image.favorites.count %> いいね
          <% end %>
        </p>
-         <% end %>
+    <% end %>
        <p>コメント件数：<%= @post_image.comments.count %></p>
   </div>
   <div class="col">
       <% @post_image.comments.each do |post_comment| %>
+   <div style="padding-top: 15px">
      <p><%= image_tag post_comment.user.get_image(100,100) %></p>
        <%= post_comment.user.nick_name %>
        <%= post_comment.comment %>
@@ -54,6 +55,50 @@
        <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
        <%= f.submit "送信する" %>
      <% end %>
+   </div>
   </div>
  </div>
+ <% else %>
+  <div class="row">
+  <div class="col">
+   <table>
+     <body>
+       <tr>
+       <td><%= image_tag @post_image.get_image(100,100) %></td>
+      </tr>
+      <tr>
+       <td><%= @user.nick_name %></td>
+      </tr>
+      <tr>
+       <td><%= @post_image.title %></td>
+      </tr>
+      <tr>
+       <td><%= @post_image.introduction %></td>
+      </tr>
+      <tr>
+       <td>
+      　 <% @post_image.tags.each do |tag| %>
+   　 　 　 <span><%= tag.name %></span>
+      　 <% end %>
+       </td>
+      </tr>
+      <tr>
+       <td>♥<%= @post_image.favorites.count %> いいね</td>
+      </tr>
+     </body>
+   </table>
+       <p>コメント件数：<%= @post_image.comments.count %></p>
+  </div>
+  <div class="col">
+      <% @post_image.comments.each do |post_comment| %>
+   <div style="padding-top: 15px">
+     <p><%= image_tag post_comment.user.get_image(100,100) %></p>
+       <%= post_comment.user.nick_name %>
+       <%= post_comment.comment %>
+      <% end %>
+   <div style="padding-top: 15px"><h2>新規登録してない方の投稿はできません。</h2></div>
+   </div>
+  </div>
+ </div>
+ <% end %>
 </div>

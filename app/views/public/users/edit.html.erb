@@ -1,6 +1,5 @@
 <div class="container">
-  <h5><%= @user.nick_name %>さんの会員情報編集</h5>
-     <h3>会員ID  <%= @user.id %></h3>
+  <h2><%= @user.nick_name %>さんの会員情報編集</h2>
       <%= form_with model: @user, url: user_edit_path do |f| %>
         <h3>ニックネーム　　　　　　　<%= f.text_field :nick_name %></h3>
         <h3>メールアドレス　　　　　　<%= f.text_field :email %></h3>

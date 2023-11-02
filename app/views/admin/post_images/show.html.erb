@@ -34,11 +34,13 @@
   </div>
   <div class="col">
       <% @post_image.comments.each do |post_comment| %>
+   <div style="padding-top: 15px">
      <p><%= image_tag post_comment.user.get_image(100,100) %></p>
        <%= post_comment.user.nick_name %>
        <%= post_comment.comment %>
         <%= link_to "削除", admin_post_image_comment_path(post_comment.post_image, post_comment), method: :delete %>
       <% end %>
+   </div>
   </div>
  </div>
 </div>
