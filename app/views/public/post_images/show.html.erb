@@ -48,7 +48,7 @@
          
     </div>
     <div class="col">
-      <% @post_image.comments.each do |post_comment| %>
+      <% @comments.each do |post_comment| %>
      <div style="padding-top: 15px">
        <p><%= image_tag post_comment.user.get_image(100,100) %></p>
          <%= post_comment.user.nick_name %>
@@ -59,8 +59,10 @@
         <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
         <%= f.submit "送信する" %>
       <% end %>
+      <%= paginate @comments %>
      </div>
     </div>
+    
   <% else %>
     <div class="row">
     <div class="col">
@@ -96,12 +98,13 @@
       
     </div>
     <div class="col">
-       <% @post_image.comments.each do |post_comment| %>
+       <% @comments.each do |post_comment| %>
      <div style="padding-top: 15px">
        <p><%= image_tag post_comment.user.get_image(100,100) %></p>
          <%= post_comment.user.nick_name %>
          <%= post_comment.comment %>
         <% end %>
+      <%= paginate @comments %>
      <div style="padding-top: 15px"><h2>新規登録してない方の投稿はできません。</h2></div>
      </div>
     </div>
