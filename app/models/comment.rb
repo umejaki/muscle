@@ -4,8 +4,6 @@ class Comment < ApplicationRecord
   belongs_to :post_image
   
   validate :check_for_ng_words
-  #NGWORD_REGEX = /バカ/
-   #validates :comment,format:  { with: NGWORD_REGEX } 
    private
    
    def check_for_ng_words

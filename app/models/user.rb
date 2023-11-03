@@ -25,6 +25,4 @@ class User < ApplicationRecord
     image.variant(resize_to_fill: [width, height,]).processed
   end
   
-
-         
 end

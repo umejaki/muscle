@@ -1,12 +1,18 @@
 <div class="container">
-  <div class="row">
+  <div class="col">
+    
    <p>いいねした投稿一覧</p>
-   <% @favorites_post_images.each do |post_image| %>
+   
+     <% @favorites_post_images.each do |post_image| %>
    <div>
-     title: <%= post_image.title %><br>
-     introduction: <%= post_image.introduction %>
+     <%= image_tag post_image.user.get_image(50,50) %><%= post_image.user.nick_name %>
+      <%= link_to post_image_path(post_image.id) do %>
+      <%= post_image.title %>
+    <% end %>
    </div>
-   <% end %> 
-   <%= render partial: "public/post_images/test", collection: @favorite_post_images %>
- </div>
+    <% end %> 
+    
+    <%= render partial: "public/post_images/test", collection: @favorite_post_images %>
+    
+  </div>
 </div>

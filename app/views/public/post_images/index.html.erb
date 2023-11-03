@@ -5,15 +5,15 @@
     <%= link_to tag.name, "/post_images/search_tag/#{tag.id}" %>
     <%="(#{tag.post_images.count})" %>
    <% end %>
+   <div>
+    <% @post_images.each do |post_image| %>
     <div>
-     <% @post_images.each do |post_image| %>
-     <div>
-      <%= image_tag post_image.user.get_image(50,50) %><%= post_image.user.nick_name %>
-        <%= link_to post_image_path(post_image.id) do %>
-        <%= post_image.title %>
-        <% end %><br>
-        <%= "#{post_image.comments.count} コメント" %>
-     <% end %>
-    </div>
- </div>
+     <%= image_tag post_image.user.get_image(50,50) %><%= post_image.user.nick_name %>
+       <%= link_to post_image_path(post_image.id) do %>
+       <%= post_image.title %>
+       <% end %><br>
+       <%= "#{post_image.comments.count} コメント" %>
+    <% end %>
+   </div>
+  </div>
 </div>

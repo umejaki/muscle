@@ -36,15 +36,14 @@ class Public::UsersController < ApplicationController
     redirect_to user_path
   end 
   
-    protected
-    
-    def user_params
-      params.require(:user).permit(:nick_name, :email, :is_deleted)
-    end
-    
-    def user
-      @user = User.find(params[:id])
-    end
-
+  protected
+  
+   def user_params
+     params.require(:user).permit(:nick_name, :email, :is_deleted)
+   end
+   
+   def user
+     @user = User.find(params[:id])
+   end
   
 end

@@ -1,37 +1,41 @@
 <div class="container">
  <div class="row">
   <div class="col">
+   
    <table>
      <body>
-       <tr>
-       <td><%= image_tag @post_image.get_image(100,100) %></td>
+      <tr>
+        <td><%= image_tag @post_image.get_image(100,100) %></td>
       </tr>
       <tr>
-       <td><%= @user.nick_name %></td>
+        <td><%= @user.nick_name %></td>
       </tr>
       <tr>
-       <td><%= @post_image.title %></td>
+        <td><%= @post_image.title %></td>
       </tr>
       <tr>
-       <td><%= @post_image.introduction %></td>
+        <td><%= @post_image.introduction %></td>
       </tr>
       <tr>
-       <td>
-      　 <% @post_image.tags.each do |tag| %>
-   　 　 　 <span><%= tag.name %></span>
-      　 <% end %>
-       </td>
+        <td>
+       　 <% @post_image.tags.each do |tag| %>
+   　  　 　 <span><%= tag.name %></span>
+       　 <% end %>
+        </td>
       </tr>
       <tr>
-       <td><%= link_to "削除", post_image_path(@post_image.id), method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
+        <td><%= link_to "削除", post_image_path(@post_image.id), method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
       </tr>
       <tr>
-       <td>♥<%= @post_image.favorites.count %> いいね</td>
+        <td>♥<%= @post_image.favorites.count %> いいね</td>
       </tr>
      </body>
    </table>
+   
           <p>コメント件数：<%= @post_image.comments.count %></p>
+          
   </div>
+  
   <div class="col">
       <% @post_image.comments.each do |post_comment| %>
    <div style="padding-top: 15px">
@@ -42,5 +46,6 @@
       <% end %>
    </div>
   </div>
+  
  </div>
 </div>

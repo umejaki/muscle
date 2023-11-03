@@ -6,10 +6,8 @@ class Public::PostImagesController < ApplicationController
   
   def show
     @post_image = PostImage.find(params[:id])
-    pp "@post_image------------------------#{@post_image.inspect}"
     @user = @post_image.user
     @comment = Comment.new
-    pp "@comment-----------------------------#{@comment.inspect}"
   end 
   
   def index
@@ -32,9 +30,7 @@ class Public::PostImagesController < ApplicationController
     # １.&2. データを受け取り新規登録するためのインスタンス作成
     @post_image = PostImage.new(post_image_params)
     @post_image.user_id = current_user.id
-    # 3. データをデータベースに保存するためのsaveメソッド実行
    if @post_image.save!
-    # 4. リダイレクト
     redirect_to post_image_path(@post_image.id)
    else
     render :new
@@ -49,9 +45,8 @@ class Public::PostImagesController < ApplicationController
   
   private
   
-    # ストロングパラメータ
-  def post_image_params
-    params.require(:post_image).permit(:image, :title, :introduction, tag_ids: [])
-  end
+   def post_image_params
+     params.require(:post_image).permit(:image, :title, :introduction, tag_ids: [])
+   end
 
 end
