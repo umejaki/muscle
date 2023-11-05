@@ -78,7 +78,7 @@ class Public::RegistrationsController < Devise::RegistrationsController
       
     
    def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:nick_name, :is_deleted])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:nick_name, :image, :is_deleted])
    end
   
 end
