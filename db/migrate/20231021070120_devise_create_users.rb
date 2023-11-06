@@ -13,7 +13,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.1]
 
       ## Rememberable
       t.datetime :remember_created_at
-      t.string :nick_name,
+      t.string :nick_name
       t.boolean :is_deleted, null: false, default: false
 
       ## Trackable
