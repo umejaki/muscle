@@ -1,5 +1,4 @@
 class Public::UsersController < ApplicationController
-  before_action :is_matching_login_user, only: [:edit, :update]
   before_action :user, only: [:favorites]
   
   def favorites
@@ -47,11 +46,7 @@ class Public::UsersController < ApplicationController
      @user = User.find(params[:id])
    end
    
-  def is_matching_login_user
-    user = User.find(params[:id])
-    unless user.id == current_user.id
-      redirect_to post_images_path
-    end
-  end
+   
+
   
 end

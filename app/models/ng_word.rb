@@ -1,2 +1,0 @@
-class NgWord < ApplicationRecord
-end

@@ -13,7 +13,8 @@ class Public::PostImagesController < ApplicationController
   
   def index
    if params[:post_keyword]
-    @post_images = PostImage.where(['introduction LIKE(?) OR title LIKE(?)','%'+params[:post_keyword]+'%','%'+params[:post_keyword]+'%'])
+    @post_images = PostImage.where(['introduction LIKE(?) OR title LIKE(?)','%'+params[:post_keyword]+'%','%'+params[:post_keyword]+'%']).page(params[:page]).per(6)
+    @tag = Tag.all
    else 
     @post_images = PostImage.page(params[:page]).per(6)
     @tag = Tag.all
