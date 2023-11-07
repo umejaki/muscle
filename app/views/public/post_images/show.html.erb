@@ -49,9 +49,11 @@
     </div>
     <div class="col">
       
-      <div>
+     <% if @comment.errors.any? %>
+      <div id="error_explanation" class="alert alert-danger">
         <%= flash[:alert] %>
       </div>
+    <% end %>
       
       <% @comments.each do |post_comment| %>
      <div style="padding-top: 15px">
@@ -67,6 +69,7 @@
       <%= paginate @comments %>
      </div>
     </div>
+  
     
   <% else %>
     <div class="row">

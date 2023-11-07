@@ -9,8 +9,11 @@ class Public::CommentsController < ApplicationController
     if @comment.save
       redirect_to post_image_path(@post_image.id)
     else
+    @user = @post_image.user
+    @comments = @post_image.comments.page(params[:page]).per(4)
       flash[:alert] = "投稿に失敗しました"
-      redirect_to post_image_path(@post_image.id)
+    #  redirect_to post_image_path(@post_image.id)
+      render "public/post_images/show"
     end
   end
   
