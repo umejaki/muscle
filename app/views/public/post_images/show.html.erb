@@ -25,7 +25,9 @@
           </td>
         </tr>
         <tr>
-          <td><%= link_to "削除", post_image_path(@post_image.id), method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
+          <% if @post_image.user == current_user %>
+           <td><%= link_to "削除", post_image_path(@post_image.id), method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
+          <% end %>
         </tr>
        </body>
      </table>
