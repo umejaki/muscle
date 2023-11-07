@@ -32,7 +32,7 @@ class Public::UsersController < ApplicationController
   
   def update
     @user = current_user
-    @user.update(user_params)
+    @user.update!(user_params)
     redirect_to user_path
   end 
   
