@@ -48,6 +48,11 @@
          
     </div>
     <div class="col">
+      
+      <div>
+        <%= flash[:alert] %>
+      </div>
+      
       <% @comments.each do |post_comment| %>
      <div style="padding-top: 15px">
        <p><%= image_tag post_comment.user.get_image(100,100) %></p>

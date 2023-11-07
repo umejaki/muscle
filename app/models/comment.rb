@@ -3,7 +3,8 @@ class Comment < ApplicationRecord
   belongs_to :user
   belongs_to :post_image
   
-  validate :comment, length: { in: 3..50 }
+  
+  validates :comment, length: { in: 3..50 }
   
   validate :check_for_ng_words
    private

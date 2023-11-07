@@ -9,6 +9,7 @@ class Public::CommentsController < ApplicationController
     if @comment.save
       redirect_to post_image_path(@post_image.id)
     else
+      flash[:alert] = "投稿に失敗しました"
       redirect_to post_image_path(@post_image.id)
     end
   end
