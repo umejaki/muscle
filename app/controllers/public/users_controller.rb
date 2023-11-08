@@ -32,14 +32,18 @@ class Public::UsersController < ApplicationController
   
   def update
     @user = current_user
-    @user.update!(user_params)
+   if @user.update(user_params)
     redirect_to user_path
+   else
+    flash[:alert] = "編集に失敗しました"
+    render :edit
+   end
   end 
   
   protected
   
    def user_params
-     params.require(:user).permit(:nick_name, :email, :image, :is_deleted)
+     params.require(:user).permit(:nick_name, :email, :image, :password, :password_confirmation, :is_deleted)
    end
    
    def user

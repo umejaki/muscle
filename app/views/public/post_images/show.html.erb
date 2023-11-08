@@ -51,7 +51,7 @@
     </div>
     <div class="col">
       
-     <% if @comment.errors.any? %>
+    <% if @comment.errors.any? %>
       <div id="error_explanation" class="alert alert-danger">
         <% @comment.errors.full_messages.each do |message| %>
           <li><%= flash[:alert] %></li>
