@@ -6,14 +6,3 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-Admin.create!(
-  email: 'a@1',
-  password: '111111'
-)
-
-Tag.create([
-  { name: '上半身トレーニング' },
-  { name: '腹筋' },
-  { name: '下半身トレーニング' },
-  { name: '器具トレーニング' },
-])
