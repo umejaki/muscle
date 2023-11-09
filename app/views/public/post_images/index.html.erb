@@ -8,7 +8,7 @@
    <% end %>
    <div>
     <% @post_images.each do |post_image| %>
-    <div>
+    <div style="padding-top: 15px">
      <%= image_tag post_image.user.get_image(50,50) %><%= post_image.user.nick_name %>
        <%= link_to post_image_path(post_image.id) do %>
        <%= post_image.title %>

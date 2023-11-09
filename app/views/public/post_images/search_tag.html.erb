@@ -5,24 +5,16 @@
   <i class="fa-sharp fa-solid fa-tag"></i>
    <%= @tag.name %>
    
-  <table>
-    <% @post_images.each do |post_image|%>
-      <tbody>
-       <tr>
-         <td><%= post_image.user.nick_name %></td>
-         <td>
-           <%= link_to post_image_path(post_image.id) do %>
-            <%= post_image.title %>
-           <% end %>
-         </td>
-         <td><%= post_image.introduction %></td>
-       </tr>
-       <tr>
-         <td><%= link_to "#{post_image.comments.count} コメント", post_image_path(post_image.id) %></td>
-       </tr>
-      </tbody>
+  <div>
+    <% @post_images.each do |post_image| %>
+    <div>
+     <%= image_tag post_image.user.get_image(50,50) %><%= post_image.user.nick_name %>
+       <%= link_to post_image_path(post_image.id) do %>
+       <%= post_image.title %>
+       <% end %><br>
+       <%= "#{post_image.comments.count} コメント" %>
     <% end %>
-  </table>
+   </div>
   
  </div>
 </div>

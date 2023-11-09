@@ -5,9 +5,11 @@
      
      <table>
        <body>
+        <div style="padding-top: 15px">
         <tr>
           <td><%= image_tag @post_image.get_image(200,200) %></td>
         </tr>
+        </div>
         <tr>
           <td><%= @user.nick_name %></td>
         </tr>
@@ -58,9 +60,8 @@
         <% end %>
       </div>
     <% end %>
-      
-      <% @comments.each do |post_comment| %>
      <div style="padding-top: 15px">
+      <% @comments.each do |post_comment| %>
        <p><%= image_tag post_comment.user.get_image(100,100) %></p>
          <%= post_comment.user.nick_name %>
          <%= post_comment.comment %>
