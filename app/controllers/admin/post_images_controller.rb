@@ -11,6 +11,12 @@ class Admin::PostImagesController < ApplicationController
     @comments = @post_image.comments.page(params[:page]).per(4)
   end
   
+  def destroy
+    @post_image = PostImage.find(params[:id])
+    @post_image.destroy
+    redirect_to admin_user_path(@post_image.user_id)
+  end 
+  
   private
   def user_params
     params.require(:user).permit(:nick_name, :email, :is_deleted)
