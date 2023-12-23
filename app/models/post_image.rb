@@ -8,8 +8,8 @@ class PostImage < ApplicationRecord
   
   has_one_attached :image
   
-  validates :introduction, length: { in: 1..100 }
   validates :title, length: { in: 3..20 }
+  validates :introduction, length: { in: 1..100 }
   
   def get_image(width, height)
    unless image.attached?

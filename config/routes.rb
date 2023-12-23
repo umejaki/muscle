@@ -36,7 +36,7 @@ Rails.application.routes.draw do
 
     get "post_images/search_tag/:id" => "post_images#search_tag"
 
-    resources :post_images, only: [:new, :index, :show, :create, :destroy] do
+    resources :post_images, only: [:new, :index, :show, :edit, :create, :update, :destroy] do
       resource :favorites, only: [:create, :destroy]
       resources :comments, only: [:create, :destroy]
     end

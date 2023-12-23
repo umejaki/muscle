@@ -28,7 +28,7 @@
         </tr>
         <tr>
           <% if @post_image.user == current_user %>
-           <td><%= link_to "削除", post_image_path(@post_image.id), method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
+           <td style="display: flex"><div><%= link_to "編集",edit_post_image_path(@post_image.id) %></div><div style="padding-left: 30px"><%= link_to "削除", post_image_path(@post_image.id), method: :delete, "data-confirm" => "本当に削除しますか？" %></div></td>
           <% end %>
         </tr>
        </body>
@@ -65,7 +65,10 @@
        <p><%= image_tag post_comment.user.get_image(100,100) %></p>
          <%= post_comment.user.nick_name %>
          <%= post_comment.comment %>
-          <%= link_to "削除", post_image_comment_path(post_comment.post_image, post_comment), method: :delete %>
+         <%= post_comment.created_at.strftime('%Y/%m/%d') %>
+         <% if post_comment.user == current_user %>
+           <%= link_to "削除", post_image_comment_path(post_comment.post_image, post_comment), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+         <% end %>
       <% end %>
       <%= form_with model: [@post_image, @comment] do |f| %>
         <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>

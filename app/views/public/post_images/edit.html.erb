@@ -1,0 +1,58 @@
+<div class="container">
+   <div class="row">
+    <div class="col">
+      
+    <% if @post_image.errors.any? %>
+      <%= @post_image.errors.count %>件のエラーが発生しました
+    <ul>
+      <% @post_image.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+    <% end %>
+     <%= form_with model: @post_image, url: post_image_path do |f| %>
+      <table>
+        <tbody>
+         <div style="padding-top: 15px">
+           <tr>
+             <td><%= image_tag @post_image.get_image(200,200) %></td>
+           </tr>
+         </div>
+         <tr>
+           <td><%= @user.nick_name %></td>
+         </tr>
+         <tr>
+           <td><%= f.text_field :title %></td>
+         </tr>
+         <tr>
+           <td><%= f.text_area :introduction %></td>
+         </tr>
+         <tr>
+           <td>
+            <% @post_image.tags.each do |tag| %>
+              <span><%= tag.name %></span>
+            <% end %>
+           </td>
+         </tr>
+         <tr>
+           <td><%= f.submit '保存' %></td>
+         </tr>
+       </tbody>
+      </table>
+     <% end %>
+         <p>♥<%= @post_image.favorites.count %> いいね</p>
+         <p>コメント件数：<%= @post_image.comments.count %></p>
+         
+    </div>
+      
+    <div class="col">
+      <% @comments.each do |post_comment| %>
+        <div style="padding-top: 15px">
+          <p><%= image_tag post_comment.user.get_image(100,100) %></p>
+          <%= post_comment.user.nick_name %>
+          <%= post_comment.comment %>
+      <% end %>
+      <%= paginate @comments %>
+     </div>
+    </div>
+</div>

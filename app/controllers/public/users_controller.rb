@@ -1,4 +1,5 @@
 class Public::UsersController < ApplicationController
+  before_action :authenticate_user!
   before_action :user, only: [:favorites]
   
   def favorites
