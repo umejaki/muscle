@@ -14,7 +14,7 @@
    
     <div>
       <%= form_with model: @post_image, url: post_images_path do |f| %>
-       <div style="padding: 15px 0px" >画像　　　　　　　　　 <%= f.file_field :image, accept: "image/*" %></div>
+       <div style="padding: 15px 0px; display: flex;" ><div>画像</div>　　　　　　　　　 <div><%= f.file_field :image, accept: "image/*" %></div></div>
        <div style="padding: 15px 0px; display: flex;" ><div>タイトル(3~20文字)</div>　　 <div><%= f.text_field :title %></div></div>
        <div style="padding: 15px 0px; display: flex;" ><div>内容(1~100文字)</div><div style="padding-left: 56px"><%= f.text_area :introduction %></div></div>
        <div class='form-group'>
