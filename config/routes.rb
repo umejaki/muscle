@@ -28,7 +28,7 @@ Rails.application.routes.draw do
     get '/user/edit' => 'users#edit'
     get '/user' => 'users#show'
     get 'user/post_images' => 'users#index'
-    resources :users do
+    resources :users, only: [:index] do
       member do
         get :favorites
       end

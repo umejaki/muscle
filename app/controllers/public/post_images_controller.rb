@@ -10,7 +10,7 @@ class Public::PostImagesController < ApplicationController
     @post_image = PostImage.find(params[:id])
     @user = @post_image.user
     @comment = Comment.new
-    @comments = @post_image.comments.page(params[:page]).per(4)
+    @comments = @post_image.comments.order(created_at: :desc).page(params[:page]).per(4)
   end 
   
   def index
@@ -18,7 +18,7 @@ class Public::PostImagesController < ApplicationController
     @post_images = PostImage.where(['introduction LIKE(?) OR title LIKE(?)','%'+params[:post_keyword]+'%','%'+params[:post_keyword]+'%']).page(params[:page]).per(6)
     @tag = Tag.all
    else 
-    @post_images = PostImage.page(params[:page]).per(6)
+    @post_images = PostImage.order(created_at: :desc).page(params[:page]).per(6)
     @tag = Tag.all
    end 
   end 

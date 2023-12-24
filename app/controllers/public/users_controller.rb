@@ -1,5 +1,5 @@
 class Public::UsersController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:index]
   before_action :user, only: [:favorites]
   
   def favorites
@@ -50,8 +50,4 @@ class Public::UsersController < ApplicationController
    def user
      @user = User.find(params[:id])
    end
-   
-   
-
-  
 end

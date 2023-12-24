@@ -2,14 +2,14 @@ class Admin::PostImagesController < ApplicationController
   before_action :authenticate_admin!
   
   def index
-    @post_images = PostImage.page(params[:page]).per(6)
+    @post_images = PostImage.order(created_at: :desc).page(params[:page]).per(6)
     @tag = Tag.all
   end 
   
   def show
     @post_image = PostImage.find(params[:id])
     @user = @post_image.user
-    @comments = @post_image.comments.page(params[:page]).per(4)
+    @comments = @post_image.comments.order(created_at: :desc).page(params[:page]).per(4)
   end
   
   def destroy
